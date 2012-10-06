@@ -1,42 +1,42 @@
 <?php
 
 Route::get('/', function() {
-	return View::make('home.index');
+	return View::make('timer.index');
 });
 
-Route::post('/', function() {
-	$url = Input::get('url');
+// Route::post('/', function() {
+// 	$url = Input::get('url');
 
-	// Validate the URL
-	$v = Url::validate(array('url' => $url));
-	if ($v !== true) return Redirect::to('/')->with_errors($v->errors);
+// 	// Validate the URL
+// 	$v = Url::validate(array('url' => $url));
+// 	if ($v !== true) return Redirect::to('/')->with_errors($v->errors);
 	
-	// If URL is already in the table, retun it
-	$record = Url::where_url($url)->first();
-	if ($record) {
-		return View::make('home.result')->with('shortened', $record->shortened);
-	}
+// 	// If URL is already in the table, retun it
+// 	$record = Url::where_url($url)->first();
+// 	if ($record) {
+// 		return View::make('home.result')->with('shortened', $record->shortened);
+// 	}
 	
-	// Otherwise add a new row and return the shortened url
-	$row = Url::create(array(
-		'url' => $url,
-		'shortened' => Url::get_unique_shortened_url()
-	));
+// 	// Otherwise add a new row and return the shortened url
+// 	$row = Url::create(array(
+// 		'url' => $url,
+// 		'shortened' => Url::get_unique_shortened_url()
+// 	));
 
-	if ($row) return View::make('home.result')->with('shortened', $row->shortened);
-	else return Response::error('url-not-created');
-});
+// 	if ($row) return View::make('home.result')->with('shortened', $row->shortened);
+// 	else return Response::error('url-not-created');
+// });
 
-Route::get('(:any)', function($shortened) {
-	// Query the DB for the row with that short URL
-	$row = Url::where_shortened($shortened)->first();
+// Route::get('(:any)', function($shortened) {
+// 	// Query the DB for the row with that short URL
+// 	$row = Url::where_shortened($shortened)->first();
 
-	// If not found, redirect to the home page
-	if (is_null($row)) return Redirect::to('/');
+// 	// If not found, redirect to the home page
+// 	if (is_null($row)) return Redirect::to('/');
 
-	// Else fetch the long URL and redirect
-	return Redirect::to($row->url);
-});
+// 	// Else fetch the long URL and redirect
+// 	return Redirect::to($row->url);
+// });
 
 /*
 |--------------------------------------------------------------------------

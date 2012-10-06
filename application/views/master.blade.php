@@ -1,32 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en_US">
 <head>
-	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>My URL shortener</title>
-	<meta name="viewport" content="width=device-width">
+    
+    <?php
+    	$title = "";
+    	$description = "";
 
-	<style type="text/css">
-		.error { color: red; font-style: italic; }
-	</style>
+    	$url = URL::current();
+    ?>
+
+    <!-- Meta tags used by mobile devices -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('/css/img/icons/114x114.png'); }}">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('/css/img/icons/72x72.png'); }}">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ asset('/css/img/icons/57x57.png'); }}">
+	<link rel="apple-touch-startup-image" href="{{ asset('/css/img/icons/splash-screen.png'); }}" />
+	<link rel="shortcut icon" href="{{ asset('/css/img/icons/favicon.ico'); }}">
+
+	<!-- Open graph meta tags -->
+	<meta property="fb:admins" content="100000936142315">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="{{ $url }}">
+	<meta property="og:site_name" content="{{ $title }}">
+	<meta property="og:title" content="{{ $title }}">
+	<meta property="og:description" content="{{ $description }}">
+	<meta property="og:image" content="{{ asset('/css/img/icons/300x300.png'); }}">
+
+	<title>Timer</title>
+	<meta name="description" content="{{ $description }}"/>
+
 </head>
 <body>
 
 <div id="container">
-	<header>
-		@section('title')
-			<h1>My funky URL shortener</h1>
-		@yield_section
-	</header>
-
-	<div id="main" role="main">
-		@yield('page-content')
-	</div>
-
-	<footer>
-		
-	</footer>
 </div>
 
 </body>
 </html>
+
+
