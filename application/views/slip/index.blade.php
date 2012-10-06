@@ -1,0 +1,1 @@
+This is the /Users/Ahrengot/Documents/privat/temp work/Timer/application/views/slip/index.blade.php view
