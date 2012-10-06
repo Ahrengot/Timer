@@ -27,7 +27,8 @@
       'running': false,
       'description': '',
       'duration': 0
-    }
+    },
+    urlRoot: 'slips/'
   });
 
   /* --------------------------------------------

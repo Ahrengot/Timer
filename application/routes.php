@@ -1,5 +1,14 @@
 <?php
 
+// Slips Resouces
+Route::get('slips', array('as' => 'slips', 'uses' => 'slips@index'));
+Route::get('slips/(:any)', array('as' => 'slip', 'uses' => 'slips@show'));
+Route::get('slips/new', array('as' => 'new_slip', 'uses' => 'slips@new'));
+Route::get('slips/(:any)edit', array('as' => 'edit_slip', 'uses' => 'slips@edit'));
+Route::post('slips', 'Slips@create');
+Route::put('slips/(:any)', 'slips@update');
+Route::delete('slips/(:any)', 'slips@destroy');
+
 Route::get('/', function() {
 	return View::make('timer.index');
 });
