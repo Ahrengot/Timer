@@ -27,8 +27,7 @@
       'running': false,
       'description': '',
       'duration': 0
-    },
-    urlRoot: 'slips/'
+    }
   });
 
   /* --------------------------------------------
@@ -38,6 +37,7 @@
 
 
   timer.collection.Slips = Backbone.Collection.extend({
+    url: "" + window.BASE_URL + "/slips/",
     model: timer.model.Slip,
     parse: function(result) {
       return result;
@@ -72,7 +72,8 @@
       timer.templates = new TemplateController();
       timer.slips = new timer.collection.Slips();
       timer.slips.on('reset', this.initApplication, this);
-      return log("Initialzed new instance of timer.router.MainRouter");
+      log("Initialzed new instance of timer.router.MainRouter");
+      return timer.slips.fetch();
     },
     initApplication: function() {
       return log("Successfully fetched time slips from the server.");

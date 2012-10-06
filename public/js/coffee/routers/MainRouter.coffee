@@ -9,6 +9,7 @@ timer.router.MainRouter = Backbone.Router.extend
 		timer.slips.on 'reset', @initApplication, this
 
 		log "Initialzed new instance of timer.router.MainRouter"
+		timer.slips.fetch();
 	initApplication: ->
 		log "Successfully fetched time slips from the server."
 	startTimer: (desc) ->

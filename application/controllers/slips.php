@@ -4,7 +4,7 @@ class Slips_Controller extends Base_Controller {
 
 	public function action_index() {
         $all_slips = Slip::all();
-        return $all_slips;
+        return eloquent_to_json($all_slips);
     }
 
     public function action_create() {
