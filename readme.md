@@ -6,7 +6,7 @@ Just a simple playground example using Laravel, Backbone.js and CoffeeScript.
 - There should also be an all time spent view.
 
 ## Road Map
-- I'd like to be able to create project. Projects should contain time slips and total time.
+- I'd like to be able to create projects. Projects should contain time slips and total time.
 - I'd like to add swipe-to-delete functionality to timeslips
 
 ## Got any feedback?
