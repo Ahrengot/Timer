@@ -1,0 +1,61 @@
+<mockup version="1.0" skin="sketch" measuredW="1160" measuredH="699" mockupW="825" mockupH="684">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="335" y="15" w="684" h="684" measuredW="282" measuredH="510" zOrder="0" locked="true" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="539" y="217" w="276" h="-1" measuredW="263" measuredH="82" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <size>60</size>
+        <text>00%3A03%3A47</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Arrow" x="824" y="265" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Paragraph" x="960" y="380" w="-1" h="-1" measuredW="200" measuredH="140" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Use%20fittext.js%20here.</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="550" y="314" w="120" h="48" measuredW="51" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <text>Stop</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="683" y="314" w="128" h="48" measuredW="58" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14540253</color>
+        <text>Reset</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Canvas" x="524" y="147" w="306" h="239" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>3355443</color>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::List" x="524" y="386" w="300" h="207" measuredW="100" measuredH="205" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <alternateRowColor>14803425</alternateRowColor>
+        <borderStyle>none</borderStyle>
+        <color>16777215</color>
+        <rowHeight>41</rowHeight>
+        <size>18</size>
+        <text>Cooking%20dinner%20-%2037m%0AWorking%20out%20-%201h%202m%0ARunning%20a%205k%20-%2022m%2057s%0ACoding%20timer%20app%20-%208h%2032m%0ASetting%20up%20Github%20repo%20-%203m%2017s</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::SubTitle" x="635" y="200" w="174" h="-1" measuredW="130" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>right</align>
+        <bold>false</bold>
+        <color>13421772</color>
+        <size>16</size>
+        <text>Writing%20blog%20post</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
