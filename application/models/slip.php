@@ -1,6 +1,5 @@
 <?php
 
-class Slip extends Eloquent 
-{
-
+class Slip extends Eloquent {
+	
 }

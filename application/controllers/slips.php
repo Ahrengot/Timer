@@ -7,8 +7,14 @@ class Slips_Controller extends Base_Controller {
     }
 
     public function action_create() {
-        $input = Input::json();
-        return json_encode($input);
+        $data = Input::json();
+        
+        $time_slip = Slip::create(array(
+            'description' => $data->description,
+            'duration' => $data->duration
+        ));
+
+        return $time_slip;
     }   
 
 	public function action_show() {
