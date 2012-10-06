@@ -38,8 +38,14 @@
 <body>
 
 <div id="container">
+
 </div>
 
+<div id="javascript-templates">
+	@yield('javascript-templates')
+</div>
+
+@yield('javascript')
 </body>
 </html>
 
