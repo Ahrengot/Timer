@@ -1,0 +1,10 @@
+.timer {
+	position: relative;
+
+	.add-slip, .track-time {
+		position: relative;
+		min-height: 200px;
+		background: $dark;
+		color: $dark-gray;
+	}
+}

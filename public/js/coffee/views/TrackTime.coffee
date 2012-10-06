@@ -8,7 +8,10 @@ timer.view.TrackTime = Backbone.View.extend
 		@startTrackingTime()
 	toggleTimer: (model, running) ->
 		@startTrackingTime() if running else @stopTrackingTime()
-	startTrackingTime
+	startTrackingTime: ->
+		log "Start tracking time..."
+	stopTrackingTime: ->
+		log "Stop tracking time."
 	transitionIn: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 1000
@@ -17,11 +20,12 @@ timer.view.TrackTime = Backbone.View.extend
 	transitionOut: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 1000
-		this.$el.addClass('fadeOut')
+		this.$el.addClass 'fadeOut'
+		@model.set 'running', false
 		dfd.promise()
 	render: ->
 		template = _.template @template
-		this.$el.html(template({}))
+		this.$el.html(template(@model.toJSON()))
 		@transitionIn()
 		
 		this;

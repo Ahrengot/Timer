@@ -131,8 +131,13 @@
     },
     toggleTimer: function(model, running) {
       return this.startTrackingTime()(running ? void 0 : this.stopTrackingTime());
-    }
-  }, startTrackingTime, {
+    },
+    startTrackingTime: function() {
+      return log("Start tracking time...");
+    },
+    stopTrackingTime: function() {
+      return log("Stop tracking time.");
+    },
     transitionIn: function() {
       var dfd;
       dfd = new $.Deferred();
@@ -145,12 +150,13 @@
       dfd = new $.Deferred();
       setTimeout(dfd.resolve, 1000);
       this.$el.addClass('fadeOut');
+      this.model.set('running', false);
       return dfd.promise();
     },
     render: function() {
       var template;
       template = _.template(this.template);
-      this.$el.html(template({}));
+      this.$el.html(template(this.model.toJSON()));
       this.transitionIn();
       return this;
     }
