@@ -34,6 +34,7 @@
 	<title>Timer</title>
 	<meta name="description" content="{{ $description }}"/>
 
+	{{ HTML::style('css/combined.css'); }}
 </head>
 <body>
 
