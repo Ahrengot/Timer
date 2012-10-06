@@ -1,9 +1,8 @@
-timer.view.SlipList = Backbone.View.extend
+timer.view.AddSlip = Backbone.View.extend
 	tagName: 'section'
-	className: 'slips-list'
+	className: 'add-slip'
 	initialize: ->
-		@template = timer.templates.getTemplate 'slips-list'
-		timer.slips.on('reset', @render, this);
+		@template = timer.templates.getTemplate 'add-slip'
 	transitionIn: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 1000
@@ -16,7 +15,8 @@ timer.view.SlipList = Backbone.View.extend
 		dfd.promise()
 	render: ->
 		template = _.template @template
-		this.$el.html(template(slips: timer.slips.first(5)))
+		this.$el.html(template({}))
 		@transitionIn()
 
 		this
+

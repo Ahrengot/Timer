@@ -38,10 +38,7 @@
 
   timer.collection.Slips = Backbone.Collection.extend({
     url: "" + window.BASE_URL + "/slips/",
-    model: timer.model.Slip,
-    parse: function(result) {
-      return result;
-    }
+    model: timer.model.Slip
   });
 
   /* --------------------------------------------
@@ -50,11 +47,155 @@
   */
 
 
+  timer.view.SlipList = Backbone.View.extend({
+    tagName: 'section',
+    className: 'slips-list',
+    initialize: function() {
+      this.template = timer.templates.getTemplate('slips-list');
+      return timer.slips.on('reset', this.render, this);
+    },
+    transitionIn: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('animated fadeIn');
+      return dfd.promise();
+    },
+    transitionOut: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('fadeOut');
+      return dfd.promise();
+    },
+    render: function() {
+      var template;
+      template = _.template(this.template);
+      this.$el.html(template({
+        slips: timer.slips.first(5)
+      }));
+      this.transitionIn();
+      return this;
+    }
+  });
+
   /* --------------------------------------------
-       Begin TimerView.coffee
+       Begin AddSlip.coffee
   --------------------------------------------
   */
 
+
+  timer.view.AddSlip = Backbone.View.extend({
+    tagName: 'section',
+    className: 'add-slip',
+    initialize: function() {
+      return this.template = timer.templates.getTemplate('add-slip');
+    },
+    transitionIn: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('animated fadeIn');
+      return dfd.promise();
+    },
+    transitionOut: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('fadeOut');
+      return dfd.promise();
+    },
+    render: function() {
+      var template;
+      template = _.template(this.template);
+      this.$el.html(template({}));
+      this.transitionIn();
+      return this;
+    }
+  });
+
+  /* --------------------------------------------
+       Begin TrackTime.coffee
+  --------------------------------------------
+  */
+
+
+  timer.view.TrackTime = Backbone.View.extend({
+    tagName: 'section',
+    className: 'track-time',
+    initialize: function() {
+      log("New Track Time view initialized");
+      this.template = timer.templates.getTemplate('track-time');
+      this.model.on('change:running', this.toggleTimer, this);
+      return this.startTrackingTime();
+    },
+    toggleTimer: function(model, running) {
+      return this.startTrackingTime()(running ? void 0 : this.stopTrackingTime());
+    }
+  }, startTrackingTime, {
+    transitionIn: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('animated fadeIn');
+      return dfd.promise();
+    },
+    transitionOut: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('fadeOut');
+      return dfd.promise();
+    },
+    render: function() {
+      var template;
+      template = _.template(this.template);
+      this.$el.html(template({}));
+      this.transitionIn();
+      return this;
+    }
+  });
+
+  /* --------------------------------------------
+       Begin Timer.coffee
+  --------------------------------------------
+  */
+
+
+  timer.view.Timer = Backbone.View.extend({
+    tagName: 'article',
+    className: 'timer',
+    initialize: function() {
+      this.addSlipView = new timer.view.AddSlip();
+      this.slipList = new timer.view.SlipList();
+      return this.render();
+    },
+    trackTime: function() {
+      var _this = this;
+      return this.addSlipView.transitionOut().done(function() {
+        var model;
+        model = timer.slips.where({
+          'running': true
+        })[0];
+        return _this.trackTimeView = new timer.view.TrackTime({
+          model: model
+        });
+      });
+    },
+    reset: function() {
+      var _this = this;
+      return this.trackTimeView.transitionOut().done(function() {
+        _this.trackTimeView.destroy();
+        return _this.addSlipView.transitionIn();
+      });
+    },
+    render: function() {
+      this.$el.append(this.addSlipView.render().el);
+      this.$el.append(this.slipList.render().el);
+      $('#container').html(this.$el);
+      return this;
+    }
+  });
 
   /* --------------------------------------------
        Begin MainRouter.coffee
@@ -70,13 +211,12 @@
     },
     initialize: function() {
       timer.templates = new TemplateController();
+      timer.templates.addTemplate('track-time');
+      timer.templates.addTemplate('add-slip');
+      timer.templates.addTemplate('slips-list');
       timer.slips = new timer.collection.Slips();
-      timer.slips.on('reset', this.initApplication, this);
-      log("Initialzed new instance of timer.router.MainRouter");
+      timer.view = new timer.view.Timer();
       return timer.slips.fetch();
-    },
-    initApplication: function() {
-      return log("Successfully fetched time slips from the server.");
     },
     startTimer: function(desc) {
       return log("Starting timer for " + desc);

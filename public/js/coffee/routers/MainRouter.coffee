@@ -5,13 +5,14 @@ timer.router.MainRouter = Backbone.Router.extend
 		'reset/:term': 'resetTimer'
 	initialize: ->
 		timer.templates = new TemplateController()
-		timer.slips = new timer.collection.Slips()
-		timer.slips.on 'reset', @initApplication, this
+		timer.templates.addTemplate 'track-time'
+		timer.templates.addTemplate 'add-slip'
+		timer.templates.addTemplate 'slips-list'
 
-		log "Initialzed new instance of timer.router.MainRouter"
+		timer.slips = new timer.collection.Slips()
+		timer.view = new timer.view.Timer()
+
 		timer.slips.fetch();
-	initApplication: ->
-		log "Successfully fetched time slips from the server."
 	startTimer: (desc) ->
 		log "Starting timer for #{desc}"
 	stopTimer: (desc) ->
