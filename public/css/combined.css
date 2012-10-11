@@ -4881,45 +4881,68 @@ button {
   border: 1px solid #268a16; }
   /* line 21, sass/_ui.scss */
   button:hover {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #84d93f), color-stop(100%, #68cf13));
+    background-image: -webkit-linear-gradient(#84d93f 5%, #68cf13 100%);
+    background-image: -moz-linear-gradient(#84d93f 5%, #68cf13 100%);
+    background-image: -o-linear-gradient(#84d93f 5%, #68cf13 100%);
+    background-image: linear-gradient(#84d93f 5%, #68cf13 100%); }
+  /* line 22, sass/_ui.scss */
+  button:active {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #5cb811), color-stop(100%, #77d42a));
     background-image: -webkit-linear-gradient(#5cb811 5%, #77d42a 100%);
     background-image: -moz-linear-gradient(#5cb811 5%, #77d42a 100%);
     background-image: -o-linear-gradient(#5cb811 5%, #77d42a 100%);
-    background-image: linear-gradient(#5cb811 5%, #77d42a 100%); }
-  /* line 23, sass/_ui.scss */
-  button:active {
+    background-image: linear-gradient(#5cb811 5%, #77d42a 100%);
     position: relative;
     top: 1px; }
-  /* line 28, sass/_ui.scss */
+  /* line 24, sass/_ui.scss */
   button.red {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #fe1a00), color-stop(100%, #ce0100));
     background-image: -webkit-linear-gradient(#fe1a00 5%, #ce0100 100%);
     background-image: -moz-linear-gradient(#fe1a00 5%, #ce0100 100%);
     background-image: -o-linear-gradient(#fe1a00 5%, #ce0100 100%);
     background-image: linear-gradient(#fe1a00 5%, #ce0100 100%);
-    color: white; }
-    /* line 32, sass/_ui.scss */
+    border: 1px solid #fe1a00;
+    color: #333;
+    text-shadow: 0 1px 1px #ff7565; }
+    /* line 30, sass/_ui.scss */
     button.red:hover {
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ff3019), color-stop(100%, #e80100));
+      background-image: -webkit-linear-gradient(#ff3019 5%, #e80100 100%);
+      background-image: -moz-linear-gradient(#ff3019 5%, #e80100 100%);
+      background-image: -o-linear-gradient(#ff3019 5%, #e80100 100%);
+      background-image: linear-gradient(#ff3019 5%, #e80100 100%); }
+    /* line 31, sass/_ui.scss */
+    button.red:active {
       background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ce0100), color-stop(100%, #fe1a00));
       background-image: -webkit-linear-gradient(#ce0100 5%, #fe1a00 100%);
       background-image: -moz-linear-gradient(#ce0100 5%, #fe1a00 100%);
       background-image: -o-linear-gradient(#ce0100 5%, #fe1a00 100%);
       background-image: linear-gradient(#ce0100 5%, #fe1a00 100%); }
-  /* line 35, sass/_ui.scss */
+  /* line 34, sass/_ui.scss */
   button.silver {
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ededed), color-stop(100%, #dfdfdf));
-    background-image: -webkit-linear-gradient(#ededed 5%, #dfdfdf 100%);
-    background-image: -moz-linear-gradient(#ededed 5%, #dfdfdf 100%);
-    background-image: -o-linear-gradient(#ededed 5%, #dfdfdf 100%);
-    background-image: linear-gradient(#ededed 5%, #dfdfdf 100%);
-    color: white; }
-    /* line 39, sass/_ui.scss */
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #f9f9f9), color-stop(100%, #cecece));
+    background-image: -webkit-linear-gradient(#f9f9f9 5%, #cecece 100%);
+    background-image: -moz-linear-gradient(#f9f9f9 5%, #cecece 100%);
+    background-image: -o-linear-gradient(#f9f9f9 5%, #cecece 100%);
+    background-image: linear-gradient(#f9f9f9 5%, #cecece 100%);
+    border: 1px solid #f9f9f9;
+    color: #444;
+    text-shadow: 0 1px 1px white; }
+    /* line 40, sass/_ui.scss */
     button.silver:hover {
-      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
-      background-image: -webkit-linear-gradient(#dfdfdf 5%, #ededed 100%);
-      background-image: -moz-linear-gradient(#dfdfdf 5%, #ededed 100%);
-      background-image: -o-linear-gradient(#dfdfdf 5%, #ededed 100%);
-      background-image: linear-gradient(#dfdfdf 5%, #ededed 100%); }
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ececec), color-stop(100%, #fafafa));
+      background-image: -webkit-linear-gradient(#ececec 5%, #fafafa 100%);
+      background-image: -moz-linear-gradient(#ececec 5%, #fafafa 100%);
+      background-image: -o-linear-gradient(#ececec 5%, #fafafa 100%);
+      background-image: linear-gradient(#ececec 5%, #fafafa 100%); }
+    /* line 41, sass/_ui.scss */
+    button.silver:active {
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ededed), color-stop(100%, #dfdfdf));
+      background-image: -webkit-linear-gradient(#ededed 5%, #dfdfdf 100%);
+      background-image: -moz-linear-gradient(#ededed 5%, #dfdfdf 100%);
+      background-image: -o-linear-gradient(#ededed 5%, #dfdfdf 100%);
+      background-image: linear-gradient(#ededed 5%, #dfdfdf 100%); }
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.

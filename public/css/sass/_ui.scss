@@ -18,24 +18,26 @@ button {
 	@include border-radius(6px);
 	border:1px solid #268a16;
 
-	&:hover { @include background-image(linear-gradient(#5cb811 5%, #77d42a 100%)); }
-	
-	&:active {
-		position:relative;
-		top:1px;
-	}
+	&:hover { @include background-image(linear-gradient(lighten(#77d42a, 5%) 5%, lighten(#5cb811, 5%) 100%)); }
+	&:active { @include background-image(linear-gradient(#5cb811 5%, #77d42a 100%)); position:relative; top:1px; }
 
 	&.red {
 		@include background-image(linear-gradient(#fe1a00 5%, #ce0100 100%));
-		color: white;
+		border:1px solid #fe1a00;
 
-		&:hover { @include background-image(linear-gradient(#ce0100 5%, #fe1a00 100%)); }
+		color: #333;
+		text-shadow: 0 1px 1px lighten(#fe1a00, 20%);
+		&:hover { @include background-image(linear-gradient(lighten(#fe1a00, 5%) 5%, lighten(#ce0100, 5%) 100%)); }
+		&:active { @include background-image(linear-gradient(#ce0100 5%, #fe1a00 100%)); }
 	}
 
 	&.silver {
-		@include background-image(linear-gradient(#ededed 5%, #dfdfdf 100%));
-		color: white;
-		
-		&:hover { @include background-image(linear-gradient(#dfdfdf 5%, #ededed 100%)); }
+		@include background-image(linear-gradient(#f9f9f9 5%, #cecece 100%));
+		border:1px solid #f9f9f9;
+
+		color: #444;
+		text-shadow: 0 1px 1px white;
+		&:hover { @include background-image(linear-gradient(lighten(#dfdfdf, 5%) 5%, lighten(#ededed, 5%) 100%)); }
+		&:active { @include background-image(linear-gradient(#ededed 5%, #dfdfdf 100%)); }
 	}
 }
