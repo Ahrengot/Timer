@@ -88,6 +88,9 @@
   timer.view.AddSlip = Backbone.View.extend({
     tagName: 'section',
     className: 'add-slip',
+    events: {
+      'click button': 'addNewSlip'
+    },
     initialize: function() {
       return this.template = timer.templates.getTemplate('add-slip');
     },
@@ -98,12 +101,25 @@
       this.$el.addClass('animated fadeIn');
       return dfd.promise();
     },
-    transitionOut: function() {
-      var dfd;
-      dfd = new $.Deferred();
-      setTimeout(dfd.resolve, 1000);
-      this.$el.addClass('fadeOut');
-      return dfd.promise();
+    addNewSlip: function() {
+      var description;
+      description = prompt('Enter slip name');
+      if (description === null) {
+        return;
+      }
+      if (description === '') {
+        return alert('You need to enter a slip name');
+      }
+      if (timer.slips.where({
+        'description': description
+      }) > 0) {
+        return alert('A slip with that name already exists');
+      }
+      timer.slips.add({
+        'description': description,
+        'running': true
+      });
+      return timer.router.navigate("/track/" + (escape(description)), true);
     },
     render: function() {
       var template;
@@ -111,6 +127,13 @@
       this.$el.html(template({}));
       this.transitionIn();
       return this;
+    },
+    transitionOut: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('fadeOut');
+      return dfd.promise();
     }
   });
 
@@ -176,24 +199,30 @@
       this.slipList = new timer.view.SlipList();
       return this.render();
     },
-    trackTime: function() {
+    trackTime: function(model) {
       var _this = this;
-      return this.addSlipView.transitionOut().done(function() {
-        var model;
-        model = timer.slips.where({
-          'running': true
-        })[0];
-        return _this.trackTimeView = new timer.view.TrackTime({
+      if (this.addSlipView) {
+        return this.addSlipView.transitionOut().done(function() {
+          return _this.trackTimeView = new timer.view.TrackTime({
+            model: model
+          });
+        });
+      } else {
+        return this.trackTimeView = new timer.view.TrackTime({
           model: model
         });
-      });
+      }
     },
     reset: function() {
       var _this = this;
-      return this.trackTimeView.transitionOut().done(function() {
-        _this.trackTimeView.destroy();
-        return _this.addSlipView.transitionIn();
-      });
+      if (this.trackTimeView) {
+        return this.trackTimeView.transitionOut().done(function() {
+          _this.trackTimeView.destroy();
+          return _this.addSlipView.transitionIn();
+        });
+      } else {
+        return this.addSlipView.transitionIn();
+      }
     },
     render: function() {
       this.$el.append(this.addSlipView.render().el);
@@ -211,9 +240,10 @@
 
   timer.router.MainRouter = Backbone.Router.extend({
     routes: {
-      'start/:term': 'startTimer',
-      'stop/:term': 'stopTimer',
-      'reset/:term': 'resetTimer'
+      'track/:term': 'startTimer',
+      'reset/:term': 'resetTimer',
+      '': 'stopTimer',
+      '': 'stopTimer'
     },
     initialize: function() {
       timer.templates = new TemplateController();
@@ -225,10 +255,18 @@
       return timer.slips.fetch();
     },
     startTimer: function(desc) {
-      return log("Starting timer for " + desc);
+      var model;
+      model = timer.slips.where({
+        'description': unescape(desc)
+      })[0];
+      if (!model) {
+        return this.navigate('/', true);
+      }
+      return log("Starting timer for " + desc + " – Model: ", model, ". Collection: ", timer.slips);
     },
     stopTimer: function(desc) {
-      return log("Stopping timer for " + desc);
+      log("Stopping timer for " + desc);
+      return timer.view.reset();
     },
     resetTimer: function(desc) {
       return log("Resetting timer for " + desc);

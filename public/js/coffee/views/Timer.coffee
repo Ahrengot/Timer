@@ -5,13 +5,18 @@ timer.view.Timer = Backbone.View.extend
 		@addSlipView = new timer.view.AddSlip()
 		@slipList = new timer.view.SlipList()
 		@render()
-	trackTime: ->
-		@addSlipView.transitionOut().done =>
-			model = timer.slips.where('running': true)[0]
+	trackTime: (model) ->
+		if @addSlipView
+			@addSlipView.transitionOut().done =>
+				@trackTimeView = new timer.view.TrackTime({model: model})
+		else 
 			@trackTimeView = new timer.view.TrackTime({model: model})
 	reset: ->
-		@trackTimeView.transitionOut().done =>
-			@trackTimeView.destroy();
+		if @trackTimeView
+			@trackTimeView.transitionOut().done =>
+				@trackTimeView.destroy();
+				@addSlipView.transitionIn();
+		else 
 			@addSlipView.transitionIn();
 	render: ->
 		this.$el.append @addSlipView.render().el

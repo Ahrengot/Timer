@@ -1,6 +1,8 @@
 timer.view.AddSlip = Backbone.View.extend
 	tagName: 'section'
 	className: 'add-slip'
+	events:
+		'click button': 'addNewSlip'
 	initialize: ->
 		@template = timer.templates.getTemplate 'add-slip'
 	transitionIn: ->
@@ -8,15 +10,26 @@ timer.view.AddSlip = Backbone.View.extend
 		setTimeout dfd.resolve, 1000
 		this.$el.addClass('animated fadeIn')
 		dfd.promise()
-	transitionOut: ->
-		dfd = new $.Deferred()
-		setTimeout dfd.resolve, 1000
-		this.$el.addClass('fadeOut')
-		dfd.promise()
+	addNewSlip: ->
+		description = prompt 'Enter slip name'
+		return if description is null # <-- User clicked cancel button
+		if description is '' then return alert 'You need to enter a slip name' # <-- Prevent empty slip names
+		if timer.slips.where('description': description) > 0 then return alert 'A slip with that name already exists' # <-- Prevent duplicate slips
+
+		timer.slips.add 
+			'description': description
+			'running': yes
+
+		timer.router.navigate "/track/#{escape(description)}", true
 	render: ->
 		template = _.template @template
 		this.$el.html(template({}))
 		@transitionIn()
 
 		this
+	transitionOut: ->
+		dfd = new $.Deferred()
+		setTimeout dfd.resolve, 1000
+		this.$el.addClass('fadeOut')
+		dfd.promise()
 
