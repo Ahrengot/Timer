@@ -11,6 +11,7 @@ timer.views.Timer = Backbone.View.extend
 				@trackTimeView = new timer.views.TrackTime model: model
 				this.$el.prepend @trackTimeView.render().el
 				model.set 'running', true
+				@trackTimeView.time.fitText(0.39)
 		else 
 			@trackTimeView = new timer.views.TrackTime({model: model})
 	reset: ->
@@ -23,6 +24,5 @@ timer.views.Timer = Backbone.View.extend
 	render: ->
 		this.$el.append @addSlipView.render().el
 		this.$el.append @slipList.render().el
-
 		$('#container').html this.$el
 		return this;

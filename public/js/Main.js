@@ -227,9 +227,9 @@
       var template;
       template = _.template(this.template);
       this.$el.html(template(this.model.toJSON()));
-      this.transitionIn();
       this.time = this.$el.find('time');
       this.stopBtn = this.$el.find('button.stop');
+      this.transitionIn();
       return this;
     }
   });
@@ -256,7 +256,8 @@
             model: model
           });
           _this.$el.prepend(_this.trackTimeView.render().el);
-          return model.set('running', true);
+          model.set('running', true);
+          return _this.trackTimeView.time.fitText(0.39);
         });
       } else {
         return this.trackTimeView = new timer.views.TrackTime({
