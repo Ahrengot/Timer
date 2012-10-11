@@ -4838,13 +4838,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     padding: 5% 10%;
     min-height: 200px;
     background: #1a1a1a;
-    color: #535353; }
-    /* line 11, sass/_timer.scss */
+    color: #535353;
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    -ms-animation-duration: 0.4s;
+    -o-animation-duration: 0.4s;
+    animation-duration: 0.4s; }
+    /* line 13, sass/_timer.scss */
     .timer .add-slip .instructions, .timer .track-time .instructions {
       position: absolute;
       width: 80%;
       bottom: 10%; }
-  /* line 18, sass/_timer.scss */
+  /* line 20, sass/_timer.scss */
   .timer .add-slip button {
     display: block;
     margin-top: 25%; }

@@ -1,3 +1,6 @@
-timer.collection.Slips = Backbone.Collection.extend
+timer.collections.Slips = Backbone.Collection.extend
 	url: "#{window.BASE_URL}/slips/"
-	model: timer.model.Slip
+	model: timer.models.Slip,
+	initialize: -> 
+		@loadingDfd = new $.Deferred()
+		this.on 'reset', => @loadingDfd.resolve()

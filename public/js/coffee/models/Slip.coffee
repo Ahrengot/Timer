@@ -1,4 +1,4 @@
-timer.model.Slip = Backbone.Model.extend
+timer.models.Slip = Backbone.Model.extend
 	defaults:
 		'running': no
 		'description': ''

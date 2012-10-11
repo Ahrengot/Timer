@@ -1,4 +1,4 @@
-timer.view.AddSlip = Backbone.View.extend
+timer.views.AddSlip = Backbone.View.extend
 	tagName: 'section'
 	className: 'add-slip'
 	events:
@@ -7,7 +7,7 @@ timer.view.AddSlip = Backbone.View.extend
 		@template = timer.templates.getTemplate 'add-slip'
 	transitionIn: ->
 		dfd = new $.Deferred()
-		setTimeout dfd.resolve, 1000
+		setTimeout dfd.resolve, 400
 		this.$el.addClass('animated fadeIn')
 		dfd.promise()
 	addNewSlip: ->
@@ -19,7 +19,7 @@ timer.view.AddSlip = Backbone.View.extend
 		timer.slips.add 
 			'description': description
 			'running': yes
-
+			
 		timer.router.navigate "/track/#{escape(description)}", true
 	render: ->
 		template = _.template @template
@@ -29,7 +29,7 @@ timer.view.AddSlip = Backbone.View.extend
 		this
 	transitionOut: ->
 		dfd = new $.Deferred()
-		setTimeout dfd.resolve, 1000
+		setTimeout dfd.resolve, 400
 		this.$el.addClass('fadeOut')
 		dfd.promise()
 

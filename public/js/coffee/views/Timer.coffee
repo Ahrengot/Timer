@@ -1,16 +1,13 @@
-timer.view.Timer = Backbone.View.extend
+timer.views.Timer = Backbone.View.extend
 	tagName: 'article'
 	className: 'timer'
 	initialize: ->
-		@addSlipView = new timer.view.AddSlip()
-		@slipList = new timer.view.SlipList()
+		@addSlipView = new timer.views.AddSlip()
+		@slipList = new timer.views.SlipList()
 		@render()
 	trackTime: (model) ->
-		if @addSlipView
-			@addSlipView.transitionOut().done =>
-				@trackTimeView = new timer.view.TrackTime({model: model})
-		else 
-			@trackTimeView = new timer.view.TrackTime({model: model})
+		if @addSlipView then @addSlipView.transitionOut().done => @trackTimeView = new timer.views.TrackTime({model: model})
+		else @trackTimeView = new timer.views.TrackTime({model: model})
 	reset: ->
 		if @trackTimeView
 			@trackTimeView.transitionOut().done =>

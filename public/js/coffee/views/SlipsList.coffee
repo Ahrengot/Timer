@@ -1,4 +1,4 @@
-timer.view.SlipList = Backbone.View.extend
+timer.views.SlipList = Backbone.View.extend
 	tagName: 'section'
 	className: 'slips-list'
 	initialize: ->

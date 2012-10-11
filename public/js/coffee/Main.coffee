@@ -1,6 +1,6 @@
-namespace 'timer.view'
-namespace 'timer.model'
-namespace 'timer.collection'
+namespace 'timer.views'
+namespace 'timer.models'
+namespace 'timer.collections'
 namespace 'timer.router'
 
 # Initialize app when DOM is ready

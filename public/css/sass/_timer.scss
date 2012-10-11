@@ -8,6 +8,8 @@
 		background: $dark;
 		color: $dark-gray;
 
+		@include experimental(animation-duration, 0.4s);
+
 		.instructions {
 			position: absolute;
 			width: 80%;
