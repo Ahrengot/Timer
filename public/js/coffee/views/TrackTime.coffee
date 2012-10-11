@@ -29,9 +29,11 @@ timer.views.TrackTime = Backbone.View.extend
 		sec = "0" + sec if sec < 10
 
 		@time.text "#{hour}:#{min}:#{sec}"
+		@model.save() if totalSec % 5 is 0 # <-- Save model every 5 seconds.
 	stopTrackingTime: ->
 		clearInterval @timer
 		@stopBtn.text('Resume').removeClass('red stop').addClass('resume')
+		@model.save()
 	resetTimer: ->
 		@stopTrackingTime()
 		@model.set 'duration', 0

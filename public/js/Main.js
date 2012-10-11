@@ -195,11 +195,15 @@
       if (sec < 10) {
         sec = "0" + sec;
       }
-      return this.time.text("" + hour + ":" + min + ":" + sec);
+      this.time.text("" + hour + ":" + min + ":" + sec);
+      if (totalSec % 5 === 0) {
+        return this.model.save();
+      }
     },
     stopTrackingTime: function() {
       clearInterval(this.timer);
-      return this.stopBtn.text('Resume').removeClass('red stop').addClass('resume');
+      this.stopBtn.text('Resume').removeClass('red stop').addClass('resume');
+      return this.model.save();
     },
     resetTimer: function() {
       this.stopTrackingTime();
