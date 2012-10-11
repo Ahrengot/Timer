@@ -3,8 +3,17 @@
 
 	.add-slip, .track-time {
 		position: relative;
+		padding: 5% 10%;
 		min-height: 200px;
 		background: $dark;
 		color: $dark-gray;
+
+		.instructions {
+			position: absolute;
+			width: 80%;
+			bottom: 10%;
+		}
 	}
+
+	.add-slip button { display: block; margin-top: 25%; }
 }

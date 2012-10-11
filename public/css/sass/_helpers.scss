@@ -23,6 +23,15 @@
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
+/* Alignment: floats */
+.left { float: left; }
+.right { float: right; }
+
+/* Alignment: text */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
 /******************************************************************
 TWIITER BOOTSTRAP
 ******************************************************************/

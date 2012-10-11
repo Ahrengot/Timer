@@ -4835,12 +4835,31 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   /* line 4, sass/_timer.scss */
   .timer .add-slip, .timer .track-time {
     position: relative;
+    padding: 5% 10%;
     min-height: 200px;
     background: #1a1a1a;
     color: #535353; }
+    /* line 11, sass/_timer.scss */
+    .timer .add-slip .instructions, .timer .track-time .instructions {
+      position: absolute;
+      width: 80%;
+      bottom: 10%; }
+  /* line 18, sass/_timer.scss */
+  .timer .add-slip button {
+    display: block;
+    margin-top: 25%; }
 
 /* line 1, sass/_ui.scss */
 button {
+  display: inline-block;
+  width: 100%;
+  color: white;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 1px 1px #306108;
+  padding: 10px 24px;
   -webkit-box-shadow: 0px 1px 0px 0px black;
   -moz-box-shadow: 0px 1px 0px 0px black;
   box-shadow: 0px 1px 0px 0px black;
@@ -4854,27 +4873,19 @@ button {
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
   border-radius: 6px;
-  border: 1px solid #268a16;
-  display: inline-block;
-  color: #306108;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  text-shadow: 1px 1px 0px #aade7c;
-  padding: 10px 24px; }
-  /* line 19, sass/_ui.scss */
+  border: 1px solid #268a16; }
+  /* line 21, sass/_ui.scss */
   button:hover {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #5cb811), color-stop(100%, #77d42a));
     background-image: -webkit-linear-gradient(#5cb811 5%, #77d42a 100%);
     background-image: -moz-linear-gradient(#5cb811 5%, #77d42a 100%);
     background-image: -o-linear-gradient(#5cb811 5%, #77d42a 100%);
     background-image: linear-gradient(#5cb811 5%, #77d42a 100%); }
-  /* line 21, sass/_ui.scss */
+  /* line 23, sass/_ui.scss */
   button:active {
     position: relative;
     top: 1px; }
-  /* line 26, sass/_ui.scss */
+  /* line 28, sass/_ui.scss */
   button.red {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #fe1a00), color-stop(100%, #ce0100));
     background-image: -webkit-linear-gradient(#fe1a00 5%, #ce0100 100%);
@@ -4882,14 +4893,14 @@ button {
     background-image: -o-linear-gradient(#fe1a00 5%, #ce0100 100%);
     background-image: linear-gradient(#fe1a00 5%, #ce0100 100%);
     color: white; }
-    /* line 30, sass/_ui.scss */
+    /* line 32, sass/_ui.scss */
     button.red:hover {
       background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ce0100), color-stop(100%, #fe1a00));
       background-image: -webkit-linear-gradient(#ce0100 5%, #fe1a00 100%);
       background-image: -moz-linear-gradient(#ce0100 5%, #fe1a00 100%);
       background-image: -o-linear-gradient(#ce0100 5%, #fe1a00 100%);
       background-image: linear-gradient(#ce0100 5%, #fe1a00 100%); }
-  /* line 33, sass/_ui.scss */
+  /* line 35, sass/_ui.scss */
   button.silver {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #ededed), color-stop(100%, #dfdfdf));
     background-image: -webkit-linear-gradient(#ededed 5%, #dfdfdf 100%);
@@ -4897,7 +4908,7 @@ button {
     background-image: -o-linear-gradient(#ededed 5%, #dfdfdf 100%);
     background-image: linear-gradient(#ededed 5%, #dfdfdf 100%);
     color: white; }
-    /* line 37, sass/_ui.scss */
+    /* line 39, sass/_ui.scss */
     button.silver:hover {
       background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
       background-image: -webkit-linear-gradient(#dfdfdf 5%, #ededed 100%);
@@ -4971,10 +4982,32 @@ button {
 .clearfix {
   zoom: 1; }
 
+/* Alignment: floats */
+/* line 27, sass/_helpers.scss */
+.left {
+  float: left; }
+
+/* line 28, sass/_helpers.scss */
+.right {
+  float: right; }
+
+/* Alignment: text */
+/* line 31, sass/_helpers.scss */
+.text-left {
+  text-align: left; }
+
+/* line 32, sass/_helpers.scss */
+.text-center {
+  text-align: center; }
+
+/* line 33, sass/_helpers.scss */
+.text-right {
+  text-align: right; }
+
 /******************************************************************
 TWIITER BOOTSTRAP
 ******************************************************************/
-/* line 29, sass/_helpers.scss */
+/* line 38, sass/_helpers.scss */
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -4982,11 +5015,11 @@ TWIITER BOOTSTRAP
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear; }
 
-/* line 33, sass/_helpers.scss */
+/* line 42, sass/_helpers.scss */
 .fade.in {
   opacity: 1; }
 
-/* line 36, sass/_helpers.scss */
+/* line 45, sass/_helpers.scss */
 .collapse {
   position: relative;
   height: 0;
@@ -4996,6 +5029,6 @@ TWIITER BOOTSTRAP
   -o-transition: height 0.35s ease;
   transition: height 0.35s ease; }
 
-/* line 42, sass/_helpers.scss */
+/* line 51, sass/_helpers.scss */
 .collapse.in {
   height: auto; }
