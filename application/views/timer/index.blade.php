@@ -22,8 +22,9 @@
 	<script type="text/template" id="template-track-time">
 		<p class="desc"><%= description %></p>
 		<time>00:00:00</time>
-		<button class="stop red">Stop</button>
-		<button class="reset silver">Reset</button>
+		<div class="columns">
+		<div class="column one-half"><button class="stop red">Stop</button></div>
+		<div class="column one-half column-last"><button class="reset silver">Reset</button></div>
 	</script>
 
 	<script type="text/template" id="template-add-slip">
