@@ -4,7 +4,17 @@
 	<script type="text/template" id="template-slips-list">
 		<ol class="slips">
 			<% _.each(slips, function(slip) { %>
-				<li><%= slip.get('description') %></li>
+				<%
+					var totalSec	= slip.get('duration'),
+						hour		= Math.floor(totalSec / 3600),
+						min			= Math.floor(totalSec / 60),
+						sec			= totalSec % 60;
+
+					if (hour < 10) hour = "0" + hour;
+					if (min < 10) min = "0" + min;
+					if (sec < 10) sec = "0" + sec;
+				%>
+				<li><%= slip.get('description') %> - <%= hour + ":" + min + ":" + sec %></li>
 			<% }); %>
 		</ol>
 	</script>

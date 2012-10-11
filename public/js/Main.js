@@ -153,19 +153,56 @@
   timer.views.TrackTime = Backbone.View.extend({
     tagName: 'section',
     className: 'track-time',
+    events: {
+      'click button.stop': 'stopTrackingTime',
+      'click button.resume': 'startTrackingTime',
+      'click button.reset': 'resetTimer'
+    },
     initialize: function() {
       this.template = timer.templates.getTemplate('track-time');
       this.model.on('change:running', this.toggleTimer, this);
-      return this.startTrackingTime();
+      return this.model.on('change:duration', this.updateTime, this);
     },
     toggleTimer: function(model, running) {
-      return this.startTrackingTime()(running ? void 0 : this.stopTrackingTime());
+      if (running) {
+        return this.startTrackingTime();
+      } else {
+        return this.stopTrackingTime();
+      }
     },
     startTrackingTime: function() {
-      return log("Start tracking time for ", this.model.toJSON());
+      var _this = this;
+      this.timer = setInterval(function() {
+        var oldTime;
+        oldTime = parseInt(_this.model.get('duration'), 10);
+        return _this.model.set('duration', oldTime + 1);
+      }, 1000);
+      return this.stopBtn.text('Stop').removeClass('resume').addClass('stop red');
+    },
+    updateTime: function(model, totalSec) {
+      var hour, min, sec;
+      hour = Math.floor(totalSec / 3600);
+      min = Math.floor(totalSec / 60);
+      sec = totalSec % 60;
+      if (hour < 10) {
+        hour = "0" + hour;
+      }
+      if (min < 10) {
+        min = "0" + min;
+      }
+      if (sec < 10) {
+        sec = "0" + sec;
+      }
+      return this.time.text("" + hour + ":" + min + ":" + sec);
     },
     stopTrackingTime: function() {
-      return log("Stop tracking time.");
+      clearInterval(this.timer);
+      return this.stopBtn.text('Resume').removeClass('red stop').addClass('resume');
+    },
+    resetTimer: function() {
+      this.stopTrackingTime();
+      this.model.set('duration', 0);
+      return this.startTrackingTime();
     },
     transitionIn: function() {
       var dfd;
@@ -187,6 +224,8 @@
       template = _.template(this.template);
       this.$el.html(template(this.model.toJSON()));
       this.transitionIn();
+      this.time = this.$el.find('time');
+      this.stopBtn = this.$el.find('button.stop');
       return this;
     }
   });
@@ -209,9 +248,11 @@
       var _this = this;
       if (this.addSlipView) {
         return this.addSlipView.transitionOut().done(function() {
-          return _this.trackTimeView = new timer.views.TrackTime({
+          _this.trackTimeView = new timer.views.TrackTime({
             model: model
           });
+          _this.$el.prepend(_this.trackTimeView.render().el);
+          return model.set('running', true);
         });
       } else {
         return this.trackTimeView = new timer.views.TrackTime({
@@ -223,7 +264,7 @@
       var _this = this;
       if (this.trackTimeView) {
         return this.trackTimeView.transitionOut().done(function() {
-          _this.trackTimeView.destroy();
+          _this.trackTimeView.remove();
           return _this.addSlipView.transitionIn();
         });
       } else {
