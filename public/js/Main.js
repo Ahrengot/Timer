@@ -154,14 +154,16 @@
     tagName: 'section',
     className: 'track-time',
     events: {
-      'click button.stop': 'stopTrackingTime',
-      'click button.resume': 'startTrackingTime',
+      'click button.resume, button.stop': 'toggleTimeTracking',
       'click button.reset': 'resetTimer'
     },
     initialize: function() {
       this.template = timer.templates.getTemplate('track-time');
       this.model.on('change:running', this.toggleTimer, this);
       return this.model.on('change:duration', this.updateTime, this);
+    },
+    toggleTimeTracking: function() {
+      return this.model.set('running', !this.model.get('running'));
     },
     toggleTimer: function(model, running) {
       if (running) {
@@ -202,7 +204,9 @@
     resetTimer: function() {
       this.stopTrackingTime();
       this.model.set('duration', 0);
-      return this.startTrackingTime();
+      if (this.model.get('running')) {
+        return this.startTrackingTime();
+      }
     },
     transitionIn: function() {
       var dfd;

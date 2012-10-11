@@ -2,13 +2,14 @@ timer.views.TrackTime = Backbone.View.extend
 	tagName: 'section'
 	className: 'track-time'
 	events: 
-		'click button.stop': 'stopTrackingTime'
-		'click button.resume': 'startTrackingTime'
+		'click button.resume, button.stop': 'toggleTimeTracking'
 		'click button.reset': 'resetTimer'
 	initialize: ->
 		@template = timer.templates.getTemplate 'track-time'
 		@model.on 'change:running', @toggleTimer, this
 		@model.on 'change:duration', @updateTime, this
+	toggleTimeTracking: ->
+		@model.set 'running', !@model.get('running')
 	toggleTimer: (model, running) ->
 		if running then @startTrackingTime() else @stopTrackingTime()
 	startTrackingTime: ->
@@ -34,7 +35,7 @@ timer.views.TrackTime = Backbone.View.extend
 	resetTimer: ->
 		@stopTrackingTime()
 		@model.set 'duration', 0
-		@startTrackingTime()
+		@startTrackingTime() if @model.get('running')
 	transitionIn: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 400
