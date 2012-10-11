@@ -33,16 +33,16 @@
 .text-right { text-align: right; }
 
 /* Columns */
-.one-half { width: 49.5%; }
-.one-third { width: 32.66%; }
-.one-fourth { width: 24.25%; }
+.one-half { width: 48%; }
+.one-third { width: 29.33%; }
+.one-fourth { width: 21%; }
 
 .one-half,
 .one-third,
 .two-third,
 .three-fourth {
     position: relative;
-    margin-right: 1%;
+    margin-right: 4%;
     float: left;
 }
 

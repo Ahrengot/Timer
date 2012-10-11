@@ -76,7 +76,7 @@ input, select {
 
 /* line 38, sass/_reset.scss */
 body {
-  font: 12px/16px "Helvetica Neue", Helvetica, sans-serif;
+  font: 15px/1.5 "Helvetica Neue", Helvetica, sans-serif;
   color: #453a34; }
 
 /* line 39, sass/_reset.scss */
@@ -4853,6 +4853,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .timer .add-slip button {
     display: block;
     margin-top: 25%; }
+  /* line 23, sass/_timer.scss */
+  .timer .track-time .desc {
+    font-size: 17px; }
+  /* line 25, sass/_timer.scss */
+  .timer .track-time time {
+    display: block;
+    width: 100%;
+    margin-top: -4px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    line-height: 1em;
+    text-rendering: optimizeLegibility;
+    color: white; }
 
 /* line 1, sass/_ui.scss */
 button {
@@ -5035,15 +5048,15 @@ button {
 /* Columns */
 /* line 36, sass/_helpers.scss */
 .one-half {
-  width: 49.5%; }
+  width: 48%; }
 
 /* line 37, sass/_helpers.scss */
 .one-third {
-  width: 32.66%; }
+  width: 29.33%; }
 
 /* line 38, sass/_helpers.scss */
 .one-fourth {
-  width: 24.25%; }
+  width: 21%; }
 
 /* line 43, sass/_helpers.scss */
 .one-half,
@@ -5051,7 +5064,7 @@ button {
 .two-third,
 .three-fourth {
   position: relative;
-  margin-right: 1%;
+  margin-right: 4%;
   float: left; }
 
 /* line 49, sass/_helpers.scss */

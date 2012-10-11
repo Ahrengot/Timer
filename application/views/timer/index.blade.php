@@ -20,7 +20,7 @@
 	</script>
 
 	<script type="text/template" id="template-track-time">
-		<p class="desc"><%= description %></p>
+		<p class="desc text-right"><%= description %></p>
 		<time>00:00:00</time>
 		<div class="columns">
 		<div class="column one-half"><button class="stop red">Stop</button></div>
