@@ -18,7 +18,7 @@
 
 	<script type="text/template" id="template-add-slip">
 		<button>Add new slip</button>
-		<p><em>Or continue tracking time on one of these:</em></p>
+		<p class="instructions text-center"><em>Or continue tracking time on one of these:</em></p>
 	</script>
 @endsection
 
