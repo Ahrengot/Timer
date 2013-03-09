@@ -1,5 +1,5 @@
 timer.models.Slip = Backbone.Model.extend
 	defaults:
-		'running': no
+		'running': off
 		'description': ''
 		'duration': 0

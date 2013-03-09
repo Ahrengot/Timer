@@ -26,7 +26,7 @@ timer.views.AddSlip = Backbone.View.extend
 		this.$el.html(template({}))
 		@transitionIn()
 
-		this
+		return @
 	transitionOut: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 400

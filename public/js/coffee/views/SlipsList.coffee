@@ -16,7 +16,7 @@ timer.views.SlipList = Backbone.View.extend
 		dfd.promise()
 	render: ->
 		template = _.template @template
-		this.$el.html(template(slips: timer.slips.first(5)))
+		this.$el.html(template(slips: timer.slips.last(5)))
 		@transitionIn()
 
 		this
