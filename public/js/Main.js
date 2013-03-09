@@ -79,7 +79,7 @@
       var template;
       template = _.template(this.template);
       this.$el.html(template({
-        slips: timer.slips.last(5)
+        slips: timer.slips.toArray()
       }));
       this.transitionIn();
       return this;
