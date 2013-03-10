@@ -14,7 +14,7 @@
 					if (min < 10) min = "0" + min;
 					if (sec < 10) sec = "0" + sec;
 				%>
-				<li><%= slip.get('description') %> - <%= hour + ":" + min + ":" + sec %></li>
+				<li><a href="#/track/<%= escape(slip.get('description')) %>"><%= slip.get('description') %> - <%= hour + ":" + min + ":" + sec %></a></li>
 			<% }); %>
 		</ol>
 	</script>
