@@ -233,6 +233,7 @@
       this.$el.html(template(this.model.toJSON()));
       this.time = this.$el.find('time');
       this.stopBtn = this.$el.find('button.toggle-timer');
+      this.updateTime(this.model, this.model.get('duration'));
       this.transitionIn();
       return this;
     }

@@ -56,6 +56,8 @@ timer.views.TrackTime = Backbone.View.extend
 		@time = this.$el.find 'time'
 		@stopBtn = this.$el.find 'button.toggle-timer'
 
+		@updateTime @model, @model.get('duration')
+
 		@transitionIn()
 		this;
 
