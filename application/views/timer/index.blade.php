@@ -23,7 +23,7 @@
 		<p class="desc text-right"><%= description %></p>
 		<time>00:00:00</time>
 		<div class="columns">
-		<div class="column one-half"><button class="stop red">Stop</button></div>
+		<div class="column one-half"><button class="resume toggle-timer">Start</button></div>
 		<div class="column one-half column-last"><button class="reset silver">Reset</button></div>
 	</script>
 

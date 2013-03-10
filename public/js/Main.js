@@ -179,6 +179,7 @@
         oldTime = parseInt(_this.model.get('duration'), 10);
         return _this.model.set('duration', oldTime + 1);
       }, 1000);
+      log("update button", this.stopBtn.length);
       return this.stopBtn.text('Stop').removeClass('resume').addClass('stop red');
     },
     updateTime: function(model, totalSec) {
@@ -232,7 +233,8 @@
       template = _.template(this.template);
       this.$el.html(template(this.model.toJSON()));
       this.time = this.$el.find('time');
-      this.stopBtn = this.$el.find('button.stop');
+      this.stopBtn = this.$el.find('button.toggle-timer');
+      log("Rendered TrackTime view");
       this.transitionIn();
       return this;
     }
@@ -273,7 +275,6 @@
         model: model
       });
       this.$el.prepend(this.trackTimeView.render().el);
-      model.set('running', true);
       return this.trackTimeView.time.fitText(0.39);
     },
     reset: function() {

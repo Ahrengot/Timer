@@ -18,6 +18,7 @@ timer.views.TrackTime = Backbone.View.extend
 				@model.set('duration', oldTime + 1)
 			, 1000
 
+		log "update button", @stopBtn.length
 		@stopBtn.text('Stop').removeClass('resume').addClass('stop red')
 	updateTime: (model, totalSec) ->
 		hour	= Math.floor(totalSec / 3600)
@@ -54,7 +55,9 @@ timer.views.TrackTime = Backbone.View.extend
 		this.$el.html(template(@model.toJSON()))
 		
 		@time = this.$el.find 'time'
-		@stopBtn = this.$el.find 'button.stop'
+		@stopBtn = this.$el.find 'button.toggle-timer'
+
+		log "Rendered TrackTime view"
 		
 		@transitionIn()
 		this;

@@ -17,7 +17,6 @@ timer.views.Timer = Backbone.View.extend
 	addTrackTimeView: (model) ->
 		@trackTimeView = new timer.views.TrackTime model: model
 		@$el.prepend @trackTimeView.render().el
-		model.set 'running', on
 		@trackTimeView.time.fitText(0.39)
 	reset: ->
 		if @trackTimeView
