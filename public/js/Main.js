@@ -10,6 +10,7 @@
   namespace('timer.router');
 
   $(function() {
+    log("ready");
     timer.router = new timer.router.MainRouter();
     return Backbone.history.start({
       pushState: false
@@ -49,44 +50,6 @@
   });
 
   /* --------------------------------------------
-       Begin SlipsList.coffee
-  --------------------------------------------
-  */
-
-
-  timer.views.SlipList = Backbone.View.extend({
-    tagName: 'section',
-    className: 'slips-list',
-    initialize: function() {
-      this.template = timer.templates.getTemplate('slips-list');
-      return timer.slips.on('reset', this.render, this);
-    },
-    transitionIn: function() {
-      var dfd;
-      dfd = new $.Deferred();
-      setTimeout(dfd.resolve, 1000);
-      this.$el.addClass('animated fadeIn');
-      return dfd.promise();
-    },
-    transitionOut: function() {
-      var dfd;
-      dfd = new $.Deferred();
-      setTimeout(dfd.resolve, 1000);
-      this.$el.addClass('fadeOut');
-      return dfd.promise();
-    },
-    render: function() {
-      var template;
-      template = _.template(this.template);
-      this.$el.html(template({
-        slips: timer.slips.toArray()
-      }));
-      this.transitionIn();
-      return this;
-    }
-  });
-
-  /* --------------------------------------------
        Begin AddSlip.coffee
   --------------------------------------------
   */
@@ -122,16 +85,20 @@
       }) > 0) {
         return alert('A slip with that name already exists');
       }
+      log("Add new slip");
       timer.slips.add({
         'description': description,
-        'running': true
+        'running': false
       });
       return timer.router.navigate("/track/" + (escape(description)), true);
     },
     render: function() {
       var template;
       template = _.template(this.template);
-      this.$el.html(template({}));
+      log("rendering");
+      this.$el.html(template({
+        slips: timer.slips.toArray()
+      }));
       this.transitionIn();
       return this;
     },
@@ -141,6 +108,44 @@
       setTimeout(dfd.resolve, 400);
       this.$el.addClass('fadeOut');
       return dfd.promise();
+    }
+  });
+
+  /* --------------------------------------------
+       Begin SlipsList.coffee
+  --------------------------------------------
+  */
+
+
+  timer.views.SlipList = Backbone.View.extend({
+    tagName: 'section',
+    className: 'slips-list',
+    initialize: function() {
+      this.template = timer.templates.getTemplate('slips-list');
+      return timer.slips.on('reset', this.render, this);
+    },
+    transitionIn: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('animated fadeIn');
+      return dfd.promise();
+    },
+    transitionOut: function() {
+      var dfd;
+      dfd = new $.Deferred();
+      setTimeout(dfd.resolve, 1000);
+      this.$el.addClass('fadeOut');
+      return dfd.promise();
+    },
+    render: function() {
+      var template;
+      template = _.template(this.template);
+      this.$el.html(template({
+        slips: timer.slips.toArray()
+      }));
+      this.transitionIn();
+      return this;
     }
   });
 

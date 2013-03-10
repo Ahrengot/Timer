@@ -42,6 +42,8 @@
 	font: lighter 1em/1.1 'Helvetica Neue' sans-serif;
 	color: #898989;
 
+	border-bottom: thin solid #ddd;
+
 	th, td {
 		padding: 1.25em 1.5em;
 		&:last-child { width: 33%; }
