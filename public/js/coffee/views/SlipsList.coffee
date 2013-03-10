@@ -5,7 +5,7 @@ timer.views.SlipList = Backbone.View.extend
 		'click tbody tr': 'switchTimer'
 	initialize: ->
 		@template = timer.templates.getTemplate 'slips-list'
-		timer.slips.on('reset add', @render, this)
+		timer.slips.on('reset add change', @render, this)
 	switchTimer: (e) ->
 		slip = e.currentTarget.childNodes[1].innerText
 		timer.router.navigate "/track/#{escape(slip)}", true

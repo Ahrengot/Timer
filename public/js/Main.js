@@ -118,7 +118,7 @@
     },
     initialize: function() {
       this.template = timer.templates.getTemplate('slips-list');
-      return timer.slips.on('reset add', this.render, this);
+      return timer.slips.on('reset add change', this.render, this);
     },
     switchTimer: function(e) {
       var slip;
