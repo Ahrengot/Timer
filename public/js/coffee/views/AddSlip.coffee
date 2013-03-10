@@ -16,8 +16,6 @@ timer.views.AddSlip = Backbone.View.extend
 		if description is '' then return alert 'You need to enter a slip name' # <-- Prevent empty slip names
 		if timer.slips.where('description': description) > 0 then return alert 'A slip with that name already exists' # <-- Prevent duplicate slips
 
-		timer.slips.add { description, 'running': no }
-			
 		timer.router.navigate "/track/#{escape(description)}", true
 	render: ->
 		template = _.template @template

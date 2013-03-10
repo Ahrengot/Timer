@@ -15,8 +15,16 @@ timer.router.MainRouter = Backbone.Router.extend
 		timer.slips.fetch();
 	startTimer: (desc) ->
 		timer.slips.loadingDfd.done =>
-			model = timer.slips.where('description': unescape(desc))[0]
-			return this.navigate('/', true) unless model  # <-- Reset URL if no match was found
+			description = unescape desc
+			
+			# See if model already exists
+			model = timer.slips.where(description)[0]
+
+			# Else create it
+			if not model 
+				log "Model didn't exist. Create it!"
+				timer.slips.add { description, 'running': no }
+				model = timer.slips.last()
 			
 			timer.view.trackTime model
 			model.save() if model.isNew()

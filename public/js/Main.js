@@ -84,10 +84,6 @@
       }) > 0) {
         return alert('A slip with that name already exists');
       }
-      timer.slips.add({
-        description: description,
-        'running': false
-      });
       return timer.router.navigate("/track/" + (escape(description)), true);
     },
     render: function() {
@@ -321,12 +317,16 @@
     startTimer: function(desc) {
       var _this = this;
       return timer.slips.loadingDfd.done(function() {
-        var model;
-        model = timer.slips.where({
-          'description': unescape(desc)
-        })[0];
+        var description, model;
+        description = unescape(desc);
+        model = timer.slips.where(description)[0];
         if (!model) {
-          return _this.navigate('/', true);
+          log("Model didn't exist. Create it!");
+          timer.slips.add({
+            description: description,
+            'running': false
+          });
+          model = timer.slips.last();
         }
         timer.view.trackTime(model);
         if (model.isNew()) {
