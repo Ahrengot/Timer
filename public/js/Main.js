@@ -254,23 +254,27 @@
     },
     trackTime: function(model) {
       var _this = this;
-      if (this.addSlipView) {
-        return this.addSlipView.transitionOut().done(function() {
-          _this.trackTimeView = new timer.views.TrackTime({
-            model: model
-          });
-          _this.$el.prepend(_this.trackTimeView.render().el);
-          model.set('running', true);
-          return _this.trackTimeView.time.fitText(0.39);
+      if (this.addSlipView != null) {
+        this.addSlipView.transitionOut().done(function() {
+          _this.addSlipView.remove();
+          _this.addSlipView = null;
+          return _this.addTrackTimeView(model);
         });
-      } else {
-        this.trackTimeView = new timer.views.TrackTime({
-          model: model
-        });
-        this.$el.prepend(this.trackTimeView.render().el);
-        model.set('running', true);
-        return this.trackTimeView.time.fitText(0.39);
       }
+      if (this.trackTimeView != null) {
+        return this.trackTimeView.transitionOut().done(function() {
+          _this.trackTimeView.remove();
+          return _this.addTrackTimeView(model);
+        });
+      }
+    },
+    addTrackTimeView: function(model) {
+      this.trackTimeView = new timer.views.TrackTime({
+        model: model
+      });
+      this.$el.prepend(this.trackTimeView.render().el);
+      model.set('running', true);
+      return this.trackTimeView.time.fitText(0.39);
     },
     reset: function() {
       var _this = this;
