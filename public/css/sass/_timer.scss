@@ -15,7 +15,6 @@ body, html, #container, .timer {
 		background: $dark;
 		color: $dark-gray;
 
-		@include experimental(animation-duration, 0.4s);
 
 		.instructions {
 			position: absolute;
@@ -30,6 +29,7 @@ body, html, #container, .timer {
 		.desc { font-size: 17px; }
 		
 		time {
+			@include experimental(animation-duration, 0.4s);
 			display: block;
 			width: 100%;
 			

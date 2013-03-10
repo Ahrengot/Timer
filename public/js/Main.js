@@ -222,14 +222,14 @@
       var dfd;
       dfd = new $.Deferred();
       setTimeout(dfd.resolve, 400);
-      this.$el.addClass('animated fadeIn');
+      this.$el.find('time').addClass('animated flipInY');
       return dfd.promise();
     },
     transitionOut: function() {
       var dfd;
       dfd = new $.Deferred();
       setTimeout(dfd.resolve, 400);
-      this.$el.addClass('fadeOut');
+      this.$el.find('time').addClass('flipOutY');
       this.model.set('running', false);
       return dfd.promise();
     },

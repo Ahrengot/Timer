@@ -41,12 +41,12 @@ timer.views.TrackTime = Backbone.View.extend
 	transitionIn: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 400
-		this.$el.addClass('animated fadeIn')
+		this.$el.find('time').addClass('animated flipInY')
 		dfd.promise()
 	transitionOut: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 400
-		this.$el.addClass 'fadeOut'
+		this.$el.find('time').addClass 'flipOutY'
 		@model.set 'running', false
 		dfd.promise()
 	render: ->
