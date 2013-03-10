@@ -4867,14 +4867,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     text-rendering: optimizeLegibility;
     color: white; }
 
-/* line 41, ../sass/_timer.scss */
+/* line 40, ../sass/_timer.scss */
 .slips {
-  font: lighter 1em/1.1 "Helvetica Neue" sans-serif; }
+  font: lighter 1em/1.1 "Helvetica Neue" sans-serif;
+  color: #898989; }
   /* line 44, ../sass/_timer.scss */
   .slips li {
-    padding: 1.5em; }
-  /* line 48, ../sass/_timer.scss */
+    background: white; }
+    /* line 47, ../sass/_timer.scss */
+    .slips li:nth-child(even) {
+      background: #e9e9e9; }
+  /* line 50, ../sass/_timer.scss */
   .slips a {
+    display: block;
+    padding: 1.25em 1.5em;
     text-decoration: none;
     color: inherit; }
 
