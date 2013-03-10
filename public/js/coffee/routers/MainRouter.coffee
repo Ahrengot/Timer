@@ -21,7 +21,6 @@ timer.router.MainRouter = Backbone.Router.extend
 			timer.view.trackTime model
 			model.save() if model.isNew()
 	stopTimer: (desc) ->
-		log "Stopping timer for #{desc}"
 		timer.view.reset()
 	resetTimer: (desc) ->
-		log "Resetting timer for #{desc}"
+		

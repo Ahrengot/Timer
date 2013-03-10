@@ -21,7 +21,6 @@ timer.views.AddSlip = Backbone.View.extend
 		timer.router.navigate "/track/#{escape(description)}", true
 	render: ->
 		template = _.template @template
-		log "rendering"
 		this.$el.html template( slips: timer.slips.toArray() )
 		@transitionIn()
 

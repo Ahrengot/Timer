@@ -13,6 +13,5 @@ namespace 'timer.router'
 
 # Initialize app when DOM is ready
 $ -> 
-	log "ready"
 	timer.router = new timer.router.MainRouter()
 	Backbone.history.start(pushState:false)

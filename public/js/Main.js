@@ -10,7 +10,6 @@
   namespace('timer.router');
 
   $(function() {
-    log("ready");
     timer.router = new timer.router.MainRouter();
     return Backbone.history.start({
       pushState: false
@@ -94,7 +93,6 @@
     render: function() {
       var template;
       template = _.template(this.template);
-      log("rendering");
       this.$el.html(template({
         slips: timer.slips.toArray()
       }));
@@ -337,12 +335,9 @@
       });
     },
     stopTimer: function(desc) {
-      log("Stopping timer for " + desc);
       return timer.view.reset();
     },
-    resetTimer: function(desc) {
-      return log("Resetting timer for " + desc);
-    }
+    resetTimer: function(desc) {}
   });
 
 }).call(this);
