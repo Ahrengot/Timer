@@ -41,6 +41,10 @@ body, html, #container, .timer {
 			text-rendering: optimizeLegibility;
 			color: white;
 		}
+
+		.columns {
+			@extend .clearfix;
+		}
 	}
 }
 
