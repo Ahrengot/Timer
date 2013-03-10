@@ -14,8 +14,8 @@ class Slips_Controller extends Base_Controller {
             'description' => $data->description,
             'duration' => $data->duration
         ));
-
-        return $time_slip;
+        
+        return eloquent_to_json($time_slip);
     }   
 
 	public function action_show() {
