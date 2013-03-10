@@ -113,9 +113,17 @@
   timer.views.SlipList = Backbone.View.extend({
     tagName: 'section',
     className: 'slips-list',
+    events: {
+      'click tbody tr': 'switchTimer'
+    },
     initialize: function() {
       this.template = timer.templates.getTemplate('slips-list');
       return timer.slips.on('reset add', this.render, this);
+    },
+    switchTimer: function(e) {
+      var slip;
+      slip = e.currentTarget.childNodes[1].innerText;
+      return timer.router.navigate("/track/" + (escape(slip)), true);
     },
     transitionIn: function() {
       var dfd;
@@ -323,7 +331,6 @@
           description: description
         })[0];
         if (model == null) {
-          log("Model didn't exist. Create it!");
           timer.slips.add({
             description: description,
             'running': false

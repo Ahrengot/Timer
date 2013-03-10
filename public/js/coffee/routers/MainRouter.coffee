@@ -22,7 +22,6 @@ timer.router.MainRouter = Backbone.Router.extend
 
 			# Else create it
 			unless model?
-				log "Model didn't exist. Create it!"
 				timer.slips.add { description, 'running': no }
 				model = timer.slips.last()
 			
