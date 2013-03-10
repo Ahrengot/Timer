@@ -18,10 +18,10 @@ timer.router.MainRouter = Backbone.Router.extend
 			description = unescape desc
 			
 			# See if model already exists
-			model = timer.slips.where(description)[0]
+			model = timer.slips.where({description})[0]
 
 			# Else create it
-			if not model 
+			unless model?
 				log "Model didn't exist. Create it!"
 				timer.slips.add { description, 'running': no }
 				model = timer.slips.last()

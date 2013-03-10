@@ -319,8 +319,10 @@
       return timer.slips.loadingDfd.done(function() {
         var description, model;
         description = unescape(desc);
-        model = timer.slips.where(description)[0];
-        if (!model) {
+        model = timer.slips.where({
+          description: description
+        })[0];
+        if (model == null) {
           log("Model didn't exist. Create it!");
           timer.slips.add({
             description: description,
