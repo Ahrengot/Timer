@@ -2,6 +2,16 @@
 
 @section('javascript-templates')
 	<script type="text/template" id="template-slips-list">
+		<%
+			function formatTime(hour, min, sec) {
+				var result = '';
+				if (hour > 0) result += hour + 'h '
+				if (hour > 0 || min > 0) result += min + 'm '
+				result += sec + 's'
+				return result;
+			}
+		%>
+
 		<ol class="slips">
 			<% _.each(slips, function(slip) { %>
 				<%
@@ -9,12 +19,10 @@
 						hour		= Math.floor(totalSec / 3600),
 						min			= Math.floor((totalSec / 60) % 60),
 						sec			= totalSec % 60;
-
-					if (hour < 10) hour = "0" + hour;
-					if (min < 10) min = "0" + min;
-					if (sec < 10) sec = "0" + sec;
 				%>
-				<li><a href="#/track/<%= escape(slip.get('description')) %>"><%= slip.get('description') %> - <%= hour + ":" + min + ":" + sec %></a></li>
+				<li><a href="#/track/<%= escape(slip.get('description')) %>">
+					<span class="title"><%= slip.get('description') %></span><span class="duration"><%= formatTime(hour, min, sec) %></span>
+				</a></li>
 			<% }); %>
 		</ol>
 	</script>
