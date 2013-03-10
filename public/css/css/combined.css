@@ -4869,20 +4869,57 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /* line 40, ../sass/_timer.scss */
 .slips {
+  width: 100%;
   font: lighter 1em/1.1 "Helvetica Neue" sans-serif;
   color: #898989; }
-  /* line 44, ../sass/_timer.scss */
-  .slips li {
-    background: white; }
-    /* line 47, ../sass/_timer.scss */
-    .slips li:nth-child(even) {
-      background: #e9e9e9; }
-  /* line 50, ../sass/_timer.scss */
-  .slips a {
-    display: block;
+  /* line 45, ../sass/_timer.scss */
+  .slips th, .slips td {
     padding: 1.25em 1.5em;
-    text-decoration: none;
-    color: inherit; }
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; }
+    /* line 47, ../sass/_timer.scss */
+    .slips th:last-child, .slips td:last-child {
+      width: 33%; }
+  /* line 51, ../sass/_timer.scss */
+  .slips th {
+    padding-top: .5em;
+    padding-bottom: .5em; }
+  /* line 53, ../sass/_timer.scss */
+  .slips thead {
+    position: relative;
+    z-index: 999;
+    border-bottom: thin solid #dedede; }
+    /* line 59, ../sass/_timer.scss */
+    .slips thead th {
+      text-align: left;
+      text-shadow: 0 1px 0 #777777;
+      color: #252525;
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #666666), color-stop(100%, #333333));
+      background-image: -webkit-linear-gradient(#666666, #333333);
+      background-image: -moz-linear-gradient(#666666, #333333);
+      background-image: -o-linear-gradient(#666666, #333333);
+      background-image: linear-gradient(#666666, #333333);
+      -webkit-box-shadow: -1px 0 0 #222222;
+      -moz-box-shadow: -1px 0 0 #222222;
+      box-shadow: -1px 0 0 #222222; }
+      /* line 66, ../sass/_timer.scss */
+      .slips thead th:last-child {
+        border-left: thin solid #666666; }
+  /* line 73, ../sass/_timer.scss */
+  .slips tbody tr {
+    background: white; }
+    /* line 75, ../sass/_timer.scss */
+    .slips tbody tr:nth-child(even) {
+      background: #f2f2f2; }
+      /* line 78, ../sass/_timer.scss */
+      .slips tbody tr:nth-child(even) td:last-child {
+        border-color: #ddd; }
+  /* line 85, ../sass/_timer.scss */
+  .slips tbody td:last-child {
+    border-left: thin solid #eeeeee; }
 
 /* line 1, ../sass/_ui.scss */
 button {

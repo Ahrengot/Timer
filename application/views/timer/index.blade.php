@@ -12,19 +12,28 @@
 			}
 		%>
 
-		<ol class="slips">
-			<% _.each(slips, function(slip) { %>
-				<%
-					var totalSec	= slip.get('duration'),
-						hour		= Math.floor(totalSec / 3600),
-						min			= Math.floor((totalSec / 60) % 60),
-						sec			= totalSec % 60;
-				%>
-				<li><a href="#/track/<%= escape(slip.get('description')) %>">
-					<span class="title"><%= slip.get('description') %></span><span class="duration"><%= formatTime(hour, min, sec) %></span>
-				</a></li>
-			<% }); %>
-		</ol>
+		<table class="slips">
+			<thead>
+				<tr>
+					<th>Slip name</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(slips, function(slip) { %>
+					<%
+						var totalSec	= slip.get('duration'),
+							hour		= Math.floor(totalSec / 3600),
+							min			= Math.floor((totalSec / 60) % 60),
+							sec			= totalSec % 60;
+					%>
+					<tr>
+						<td class="title"><%= slip.get('description') %></td>
+						<td class="duration"><%= formatTime(hour, min, sec) %></td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
 	</script>
 
 	<script type="text/template" id="template-track-time">
