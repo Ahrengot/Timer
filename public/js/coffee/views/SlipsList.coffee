@@ -3,7 +3,7 @@ timer.views.SlipList = Backbone.View.extend
 	className: 'slips-list'
 	initialize: ->
 		@template = timer.templates.getTemplate 'slips-list'
-		timer.slips.on('reset', @render, this)
+		timer.slips.on('reset add', @render, this)
 	transitionIn: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 1000
