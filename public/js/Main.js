@@ -85,9 +85,8 @@
       }) > 0) {
         return alert('A slip with that name already exists');
       }
-      log("Add new slip");
       timer.slips.add({
-        'description': description,
+        description: description,
         'running': false
       });
       return timer.router.navigate("/track/" + (escape(description)), true);

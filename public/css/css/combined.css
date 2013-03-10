@@ -4829,10 +4829,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -o-animation-name: rollOut;
   animation-name: rollOut; }
 
-/* line 1, ../sass/_timer.scss */
+/******************************************************************
+STYLING
+******************************************************************/
+/* line 4, ../sass/_timer.scss */
+body, html, #container, .timer {
+  height: 100%; }
+
+/* line 8, ../sass/_timer.scss */
 .timer {
   position: relative; }
-  /* line 4, ../sass/_timer.scss */
+  /* line 11, ../sass/_timer.scss */
   .timer .add-slip, .timer .track-time {
     position: relative;
     padding: 5% 10%;
@@ -4844,19 +4851,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -ms-animation-duration: 0.4s;
     -o-animation-duration: 0.4s;
     animation-duration: 0.4s; }
-    /* line 13, ../sass/_timer.scss */
+    /* line 20, ../sass/_timer.scss */
     .timer .add-slip .instructions, .timer .track-time .instructions {
       position: absolute;
       width: 80%;
       bottom: 10%; }
-  /* line 20, ../sass/_timer.scss */
+  /* line 27, ../sass/_timer.scss */
   .timer .add-slip button {
     display: block;
     margin-top: 25%; }
-  /* line 23, ../sass/_timer.scss */
+  /* line 30, ../sass/_timer.scss */
   .timer .track-time .desc {
     font-size: 17px; }
-  /* line 25, ../sass/_timer.scss */
+  /* line 32, ../sass/_timer.scss */
   .timer .track-time time {
     display: block;
     width: 100%;
@@ -4867,13 +4874,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     text-rendering: optimizeLegibility;
     color: white; }
 
-/* line 40, ../sass/_timer.scss */
+/* line 47, ../sass/_timer.scss */
 .slips {
   width: 100%;
   font: lighter 1em/1.1 "Helvetica Neue" sans-serif;
   color: #898989;
   border-bottom: thin solid #dddddd; }
-  /* line 47, ../sass/_timer.scss */
+  /* line 54, ../sass/_timer.scss */
   .slips th, .slips td {
     padding: 1.25em 1.5em;
     white-space: nowrap;
@@ -4881,19 +4888,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis; }
-    /* line 49, ../sass/_timer.scss */
+    /* line 56, ../sass/_timer.scss */
     .slips th:last-child, .slips td:last-child {
       width: 33%; }
-  /* line 53, ../sass/_timer.scss */
+  /* line 60, ../sass/_timer.scss */
   .slips th {
     padding-top: .5em;
     padding-bottom: .5em; }
-  /* line 55, ../sass/_timer.scss */
+  /* line 62, ../sass/_timer.scss */
   .slips thead {
     position: relative;
     z-index: 999;
-    border-bottom: thin solid #dedede; }
-    /* line 61, ../sass/_timer.scss */
+    border-bottom: thin solid #111111; }
+    /* line 68, ../sass/_timer.scss */
     .slips thead th {
       text-align: left;
       text-shadow: 0 1px 0 #777777;
@@ -4906,21 +4913,47 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       -webkit-box-shadow: -1px 0 0 #222222;
       -moz-box-shadow: -1px 0 0 #222222;
       box-shadow: -1px 0 0 #222222; }
-      /* line 68, ../sass/_timer.scss */
+      /* line 75, ../sass/_timer.scss */
       .slips thead th:last-child {
         border-left: thin solid #666666; }
-  /* line 75, ../sass/_timer.scss */
+  /* line 82, ../sass/_timer.scss */
   .slips tbody tr {
     background: white; }
-    /* line 77, ../sass/_timer.scss */
+    /* line 84, ../sass/_timer.scss */
     .slips tbody tr:nth-child(even) {
       background: #f2f2f2; }
-      /* line 80, ../sass/_timer.scss */
+      /* line 87, ../sass/_timer.scss */
       .slips tbody tr:nth-child(even) td:last-child {
         border-color: #ddd; }
-  /* line 87, ../sass/_timer.scss */
+  /* line 94, ../sass/_timer.scss */
   .slips tbody td:last-child {
     border-left: thin solid #eeeeee; }
+
+/******************************************************************
+LAYOUT
+******************************************************************/
+/* line 108, ../sass/_timer.scss */
+.track-time, .add-slip {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  @media (min-width: 1024px) {
+    /* line 108, ../sass/_timer.scss */
+    .track-time, .add-slip {
+      float: left;
+      width: 66.7%;
+      min-height: 100% !important; } }
+
+/* line 118, ../sass/_timer.scss */
+.slips {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  @media (min-width: 1024px) {
+    /* line 118, ../sass/_timer.scss */
+    .slips {
+      float: right;
+      width: 33.3%; } }
 
 /* line 1, ../sass/_ui.scss */
 button {
@@ -5066,16 +5099,16 @@ button {
 
 /* Contain floats: h5bp.com/q */
 /* line 22, ../sass/_helpers.scss */
-.clearfix:before, .clearfix:after {
+.clearfix:before, .timer:before, .clearfix:after, .timer:after {
   content: "";
   display: table; }
 
 /* line 23, ../sass/_helpers.scss */
-.clearfix:after {
+.clearfix:after, .timer:after {
   clear: both; }
 
 /* line 24, ../sass/_helpers.scss */
-.clearfix {
+.clearfix, .timer {
   zoom: 1; }
 
 /* Alignment: floats */

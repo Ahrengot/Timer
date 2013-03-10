@@ -1,3 +1,10 @@
+/******************************************************************
+STYLING
+******************************************************************/
+body, html, #container, .timer {
+	height: 100%;
+}
+
 .timer {
 	position: relative;
 	
@@ -56,7 +63,7 @@
 		position: relative;
 		z-index: 999;
 
-		border-bottom: thin solid #dedede;
+		border-bottom: thin solid #111;
 
 		th {
 			text-align: left;
@@ -89,4 +96,30 @@
 			}
 		}
 	}
+}
+
+/******************************************************************
+LAYOUT
+******************************************************************/
+.timer {
+	@extend .clearfix;
+}
+
+.track-time, .add-slip {
+	@include box-sizing(border-box);
+	
+	@include breakpoint(tablet-horizontal) {
+		float: left;
+		width: 66.7%;
+		min-height: 100% !important;
+	}
+}
+
+.slips {
+	@include box-sizing(border-box);
+
+	@include breakpoint(tablet-horizontal) {
+		float: right;
+		width: 33.3%;
+	}	
 }

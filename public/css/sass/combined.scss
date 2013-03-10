@@ -6,9 +6,10 @@
 /* Configurable variables */
 $use-mozilla-ellipsis-binding: false;
 
-@import "_colors";
-@import "_reset";
-@import "_animation";
-@import "_timer";
-@import "_ui";
-@import "_helpers";
+@import "mixins";
+@import "colors";
+@import "reset";
+@import "animation";
+@import "timer";
+@import "ui";
+@import "helpers";
