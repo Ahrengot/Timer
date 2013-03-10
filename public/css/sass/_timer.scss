@@ -1,6 +1,6 @@
 .timer {
 	position: relative;
-
+	
 	.add-slip, .track-time {
 		position: relative;
 		padding: 5% 10%;
@@ -34,5 +34,19 @@
 			text-rendering: optimizeLegibility;
 			color: white;
 		}
+	}
+
+}
+
+.slips {
+	font: lighter 1em/1.1 'Helvetica Neue' sans-serif;
+
+	li {
+		padding: 1.5em;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
 	}
 }
