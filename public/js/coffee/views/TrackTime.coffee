@@ -6,8 +6,8 @@ timer.views.TrackTime = Backbone.View.extend
 		'click button.reset': 'resetTimer'
 	initialize: ->
 		@template = timer.templates.getTemplate 'track-time'
-		@model.on 'change:running', @toggleTimer, this
-		@model.on 'change:duration', @updateTime, this
+		@model.on 'change:running', @toggleTimer, @
+		@model.on 'change:duration', @updateTime, @
 	toggleTimeTracking: ->
 		@model.set 'running', !@model.get('running')
 	toggleTimer: (model, running) ->
@@ -41,12 +41,12 @@ timer.views.TrackTime = Backbone.View.extend
 	transitionIn: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 400
-		this.$el.find('time').addClass('animated flipInY')
+		this.$el.find('time').addClass('animated fadeInLeft')
 		dfd.promise()
 	transitionOut: ->
 		dfd = new $.Deferred()
 		setTimeout dfd.resolve, 400
-		this.$el.find('time').addClass 'flipOutY'
+		this.$el.find('time').addClass 'fadeOutRight'
 		@model.set 'running', false
 		dfd.promise()
 	render: ->
@@ -60,5 +60,9 @@ timer.views.TrackTime = Backbone.View.extend
 
 		@transitionIn()
 		this;
+	destroy: ->
+		@stopTrackingTime()
+		@model.off(null, null, @)
+		@remove()
 
 

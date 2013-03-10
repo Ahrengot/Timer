@@ -12,7 +12,7 @@ timer.views.Timer = Backbone.View.extend
 			@addTrackTimeView model
 		
 		if @trackTimeView? then @trackTimeView.transitionOut().done =>
-			@trackTimeView.remove()
+			@trackTimeView.destroy()
 			@addTrackTimeView model
 	addTrackTimeView: (model) ->
 		@trackTimeView = new timer.views.TrackTime model: model

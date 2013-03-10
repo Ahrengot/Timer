@@ -222,14 +222,14 @@
       var dfd;
       dfd = new $.Deferred();
       setTimeout(dfd.resolve, 400);
-      this.$el.find('time').addClass('animated flipInY');
+      this.$el.find('time').addClass('animated fadeInLeft');
       return dfd.promise();
     },
     transitionOut: function() {
       var dfd;
       dfd = new $.Deferred();
       setTimeout(dfd.resolve, 400);
-      this.$el.find('time').addClass('flipOutY');
+      this.$el.find('time').addClass('fadeOutRight');
       this.model.set('running', false);
       return dfd.promise();
     },
@@ -242,6 +242,11 @@
       this.updateTime(this.model, this.model.get('duration'));
       this.transitionIn();
       return this;
+    },
+    destroy: function() {
+      this.stopTrackingTime();
+      this.model.off(null, null, this);
+      return this.remove();
     }
   });
 
@@ -270,7 +275,7 @@
       }
       if (this.trackTimeView != null) {
         return this.trackTimeView.transitionOut().done(function() {
-          _this.trackTimeView.remove();
+          _this.trackTimeView.destroy();
           return _this.addTrackTimeView(model);
         });
       }
