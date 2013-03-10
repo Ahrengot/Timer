@@ -179,13 +179,12 @@
         oldTime = parseInt(_this.model.get('duration'), 10);
         return _this.model.set('duration', oldTime + 1);
       }, 1000);
-      log("update button", this.stopBtn.length);
       return this.stopBtn.text('Stop').removeClass('resume').addClass('stop red');
     },
     updateTime: function(model, totalSec) {
       var hour, min, sec;
       hour = Math.floor(totalSec / 3600);
-      min = Math.floor(totalSec / 60);
+      min = Math.floor((totalSec / 60) % 60);
       sec = totalSec % 60;
       if (hour < 10) {
         hour = "0" + hour;
@@ -234,7 +233,6 @@
       this.$el.html(template(this.model.toJSON()));
       this.time = this.$el.find('time');
       this.stopBtn = this.$el.find('button.toggle-timer');
-      log("Rendered TrackTime view");
       this.transitionIn();
       return this;
     }
