@@ -2,16 +2,6 @@
 
 @section('javascript-templates')
 	<script type="text/template" id="template-slips-list">
-		<%
-			function formatTime(hour, min, sec) {
-				var result = '';
-				if (hour > 0) result += hour + 'h '
-				if (hour > 0 || min > 0) result += min + 'm '
-				result += sec + 's'
-				return result;
-			}
-		%>
-
 		<table class="slips">
 			<thead>
 				<tr>
@@ -26,10 +16,14 @@
 							hour		= Math.floor(totalSec / 3600),
 							min			= Math.floor((totalSec / 60) % 60),
 							sec			= totalSec % 60;
+
+						if (hour < 10) hour = "0" + hour;
+						if (min < 10) min = "0" + min;
+						if (sec < 10) sec = "0" + sec;
 					%>
 					<tr>
 						<td class="title"><%= slip.get('description') %></td>
-						<td class="duration"><%= formatTime(hour, min, sec) %></td>
+						<td class="duration"><%= hour + ":" + min + ":" + sec %></td>
 					</tr>
 				<% }); %>
 			</tbody>
@@ -46,7 +40,9 @@
 
 	<script type="text/template" id="template-add-slip">
 		<button>Add new slip</button>
+		<% if (slips.length) { %>
 		<p class="instructions text-center"><em>Or continue tracking time on one of these:</em></p>
+		<% } %>
 	</script>
 @endsection
 
