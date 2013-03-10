@@ -7,7 +7,7 @@
 				<%
 					var totalSec	= slip.get('duration'),
 						hour		= Math.floor(totalSec / 3600),
-						min			= Math.floor(totalSec / 60),
+						min			= Math.floor((totalSec / 60) % 60),
 						sec			= totalSec % 60;
 
 					if (hour < 10) hour = "0" + hour;

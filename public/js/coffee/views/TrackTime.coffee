@@ -52,7 +52,7 @@ timer.views.TrackTime = Backbone.View.extend
 	render: ->
 		template = _.template @template
 		this.$el.html(template(@model.toJSON()))
-		
+
 		@time = this.$el.find 'time'
 		@stopBtn = this.$el.find 'button.toggle-timer'
 
